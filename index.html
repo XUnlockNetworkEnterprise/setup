@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
@@ -32,8 +42,14 @@
     <!-- Buttons -->
     <div class="overlay__btns">
 
-      
-     
+        <button id="start" class="overlay__btn overlay__btn--transparent" onclick="start()">
+       start setup
+      </button>
+<input  id="usrname" type="input" class="overlay__btn overlay__btn--transparent" style="display:none"></input>
+
+      <button id="finish" class="overlay__btn overlay__btn--transparent" onclick="exit()" style="display:none">
+       finish setup
+      </button>
     </div>
   </div>
 
@@ -41,5 +57,47 @@
 <!-- partial -->
   <script type="module" src="https://xunlocknetworkenterprise.github.io/script.js"></script>
 
+</body>
+</html>
+
+<script>
+    var x = document.getElementById("start");
+   var y = document.getElementById("usrname");
+   var z = document.getElementById("finish");
+
+var i = 0;
+
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+    function start()
+{
+  x.style.display = "none";
+  y.style.display = "block";
+    z.style.display = "block";
+  const audio = new Audio("https://xunlocknetworkenterprise.github.io/setup/03%20-%20System%20Music%20-%20First%20Time%20Setup%20(TV).mp3")
+  audio.play();
+    document.getElementById("text").innerHTML = "enter username and agree"
+ tts("welcome to setup");
+  
+  
+}
+function exit() 
+{
+console.log("cookie created as "+document.getElementById("usrname").value)
+document.cookie = "username="+document.getElementById("usrname").value;
+  window.location.replace("https://xunlocknetworkenterprise.github.io/demo")
+}
+function tts(txt)
+{
+var msg = new SpeechSynthesisUtterance();
+msg.text = txt;
+window.speechSynthesis.speak(msg);
+ 
+}
+
+//# sourceURL=userscript.js
+</script>
 </body>
 </html>
